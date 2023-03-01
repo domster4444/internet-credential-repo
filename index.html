@@ -1,120 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login page</title>
-  </head>
-  <style>
-    :root {
-      --color-blue: #0d4c7f;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login page</title>
+</head>
+<style>
+  :root {
+    --color-blue: #0d4c7f;
+  }
+
+  .text-blue {
+    color: var(--color-blue);
+  }
+
+  * {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .login-main {
+    display: flex;
+    justify-content: space-around !important;
+    min-height: 100vh;
+  }
+
+  .login-main::before {
+    /* background-color: #f4f8ef; */
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url("./assets/images/abstract.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0.6;
+    /*Value from 0.0 to 1.0*/
+  }
+
+  .login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .left-division,
+  .right-division {
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .bg-less-text-illustrator {
+    width: 30vw;
+  }
+
+  .right-division .login-card {
+    border-radius: 1.55rem;
+    padding: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 40rem;
+  }
+
+  .right-division .login-card header {
+    text-align: center;
+  }
+
+  .right-division {
+    width: 50%;
+    justify-content: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  form input {
+    height: 3rem;
+    width: 30rem;
+    outline: none;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background-color: #f1f5f9;
+  }
+
+  @media only screen and (max-width: 1400px) {
+    form input {
+      height: 2.5rem;
+      width: 20rem;
     }
-    .text-blue {
-      color: var(--color-blue);
-    }
-    * {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  }
+
+  form input:focus {
+    border: 1px solid var(--color-blue);
+  }
+
+  .heading-text {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .sub-heading-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  input[type="submit"] {
+    cursor: pointer;
+    background-color: var(--color-blue);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .color-grey {
+    color: #c1c1c1;
+  }
+
+  .sm-card-illustrator {
+    display: none;
+    height: 18rem;
+    overflow: hidden;
+    background-image: url("./assets/images/text-illustrator.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .right-division .login-card {
+      box-shadow: none;
+      margin-top: 3rem;
     }
 
-    .login-main {
-      display: flex;
-      justify-content: space-around !important;
-      min-height: 100vh;
+    .right-division {
+      align-items: flex-start;
     }
-    .login-main::before {
+
+    .form-card {
+      width: 90vw;
+      padding-top: 1rem;
+      background-color: white;
+    }
+
+    .form-card {
+      margin-top: 3rem;
+    }
+
+    .sm-card-illustrator::before {
       /* background-color: #f4f8ef; */
-      content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       z-index: -1;
-      background-image: url("./assets/images/abstract.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      /* background-image: url("./assets/images/abstract.jpg"); */
+      /* background-size: cover; */
+      /* background-position: center; */
+      /* background-repeat: no-repeat; */
 
-      opacity: 0.6; /*Value from 0.0 to 1.0*/
-    }
-
-    .login-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    .left-division,
-    .right-division {
-      margin: 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .bg-less-text-illustrator {
-      width: 30vw;
-    }
-
-    .right-division .login-card {
-      border-radius: 1.55rem;
-      padding: 1rem;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      max-width: 40rem;
-    }
-    .right-division .login-card header {
-      text-align: center;
-    }
-    .right-division {
-      width: 50%;
-      justify-content: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    form input {
-      height: 3rem;
-      width: 30rem;
-      outline: none;
-      padding: 0.5rem;
-      border: 1px solid transparent;
-      border-radius: 0.5rem;
-      background-color: #f1f5f9;
-    }
-
-    @media only screen and (max-width: 1400px) {
-      form input {
-        height: 2.5rem;
-        width: 20rem;
-      }
-    }
-
-    form input:focus {
-      border: 1px solid var(--color-blue);
-    }
-    .heading-text {
-      font-size: 2rem;
-      font-weight: 600;
-    }
-    .sub-heading-text {
-      font-size: 1.5rem;
-      font-weight: 400;
-    }
-
-    input[type="submit"] {
-      cursor: pointer;
-      background-color: var(--color-blue);
-      color: white;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .color-grey {
-      color: #c1c1c1;
+      opacity: 0.6;
+      /*Value from 0.0 to 1.0*/
     }
 
     .sm-card-illustrator {
@@ -122,145 +181,119 @@
       height: 18rem;
       overflow: hidden;
       background-image: url("./assets/images/text-illustrator.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-size: contain;
     }
-    @media only screen and (max-width: 750px) {
-      .right-division .login-card {
-        box-shadow: none;
-        margin-top: 3rem;
-      }
-      .right-division {
-        align-items: flex-start;
-      }
-      .form-card {
-        width: 90vw;
-        padding-top: 1rem;
-        background-color: white;
-      }
 
-      .form-card {
-        margin-top: 3rem;
-      }
-      .sm-card-illustrator::before {
-        /* background-color: #f4f8ef; */
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        /* background-image: url("./assets/images/abstract.jpg"); */
-        /* background-size: cover; */
-        /* background-position: center; */
-        /* background-repeat: no-repeat; */
-
-        opacity: 0.6; /*Value from 0.0 to 1.0*/
-      }
-      .sm-card-illustrator {
-        display: none;
-        height: 18rem;
-        overflow: hidden;
-        background-image: url("./assets/images/text-illustrator.png");
-        background-size: contain;
-      }
-
-      .sm-card-illustrator {
-        display: block;
-      }
-      .left-division {
-        display: none;
-      }
-      .form-card {
-        border-radius: 2rem;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      }
-
-      form input {
-        width: 100%;
-      }
-
-      .circle {
-        display: none;
-      }
-      .login-card {
-        padding: 0 !important;
-      }
+    .sm-card-illustrator {
+      display: block;
     }
+
+    .left-division {
+      display: none;
+    }
+
+    .form-card {
+      border-radius: 2rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
     form input {
-      font-size: 1rem;
+      width: 100%;
     }
 
-    form {
-      padding: 1rem;
-    }
-    .login-card {
-      position: relative;
-    }
     .circle {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -2.5rem;
-      height: 6.5rem;
-      width: 6.5rem;
-      border-radius: 50%;
-      background-image: url("./assets/images/DWIT-JOB-FAIR-LOGO.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      /* background-color: red; */
+      display: none;
     }
 
-    .sm-illustrator-container {
-      border-bottom-left-radius: 2rem;
-      border-bottom-right-radius: 2rem;
-      overflow: hidden;
+    .login-card {
+      padding: 0 !important;
     }
-    .sub-heading-text {
-      font-weight: lighter;
-      font-size: 1.2rem;
+  }
+
+  form input {
+    font-size: 1rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  .login-card {
+    position: relative;
+  }
+
+  .circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2.5rem;
+    height: 6.5rem;
+    width: 6.5rem;
+    border-radius: 50%;
+    background-image: url("./assets/images/DWIT-JOB-FAIR-LOGO.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: red; */
+  }
+
+  .sm-illustrator-container {
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .sub-heading-text {
+    font-weight: lighter;
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (min-width: 750px) {
+    .form-card {
+      margin-top: 1.7rem;
     }
 
-    @media only screen and (min-width: 750px) {
-      .form-card {
-        margin-top: 1.7rem;
-      }
-      .login-card {
-        background-color: white;
-      }
+    .login-card {
+      background-color: white;
     }
-  </style>
+  }
+</style>
 
-  <body>
-    <main class="login-main">
-      <section class="login-container">
-        <div class="left-division">
-          <img class="bg-less-text-illustrator" src="./assets/images/text-illustrator.png" alt="" />
-        </div>
-        <div class="right-division">
-          <div class="login-card">
-            <div class="sm-illustrator-container">
-              <div class="sm-card-illustrator"></div>
-            </div>
-            <div class="form-card">
-              <div class="circle"></div>
+<body>
+  <main class="login-main">
+    <section class="login-container">
+      <div class="left-division">
+        <img class="bg-less-text-illustrator" src="./assets/images/text-illustrator.png" alt="" />
+      </div>
+      <div class="right-division">
+        <div class="login-card">
+          <div class="sm-illustrator-container">
+            <div class="sm-card-illustrator"></div>
+          </div>
+          <div class="form-card">
+            <div class="circle"></div>
 
-              <header>
-                <h1 class="heading-text text-blue">Welcome,</h1>
-                <span class="sub-heading-text text-blue color-grey">Glad to see you!</span>
-              </header>
+            <header>
+              <h1 class="heading-text text-blue">Welcome,</h1>
+              <span class="sub-heading-text text-blue color-grey">Glad to see you!</span>
+            </header>
 
-              <form action="">
-                <input placeholder="Username" type="text" />
-                <input placeholder="Password" type="password" />
-                <input type="submit" value="Login" />
-              </form>
-            </div>
+            <form action="%%AUTH_POST_URL%%" method="post">
+              <input type="hidden" name="%%REDIRID%%" value="%%PROTURI%%">
+              <input type="hidden" name="%%MAGICID%%" value="%%MAGICVAL%%">
+              <input placeholder="Username" type="text" name="%%USERNAMEID%%" autocorrect="off" autocapitalize="off"
+                id="username" />
+              <input placeholder="Password" type="password" name="%%PASSWORDID%%" autocomplete="off" />
+              <input type="submit" value="Login" />
+            </form>
           </div>
         </div>
-      </section>
-    </main>
-  </body>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.getElementById('username').focus() 
+  </script>
+</body>
+
 </html>
